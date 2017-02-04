@@ -10,12 +10,12 @@ namespace ClosestWithoutGoingOver
 	{
 		static void Main(string[] args)
 		{
-			MyObject obj1 = new MyObject(0, new DateTime(2017, 1, 1));
-			MyObject obj2 = new MyObject(1, new DateTime(2017, 1, 15));
-			MyObject obj3 = new MyObject(2, new DateTime(2017, 2, 1));
-			MyObject obj4 = new MyObject(3, new DateTime(2017, 2, 5));
-			MyObject obj5 = new MyObject(4, new DateTime(2017, 2, 18));
-			MyObject obj6 = new MyObject(5, new DateTime(2017, 3, 1));
+			MyObject obj1 = new MyObject(new DateTime(2017, 1, 1));
+			MyObject obj2 = new MyObject(new DateTime(2017, 1, 15));
+			MyObject obj3 = new MyObject(new DateTime(2017, 2, 1));
+			MyObject obj4 = new MyObject(new DateTime(2017, 2, 5));
+			MyObject obj5 = new MyObject(new DateTime(2017, 2, 18));
+			MyObject obj6 = new MyObject(new DateTime(2017, 3, 1));
 
 			List<MyObject> myObjects = new List<MyObject>();
 			myObjects.Add(obj6);
@@ -25,15 +25,15 @@ namespace ClosestWithoutGoingOver
 			myObjects.Add(obj5);
 			myObjects.Add(obj3);
 
-			Print(myObjects);
-			List<MyObject> orderedObjects = myObjects.OrderBy(x => x.ObjectId).ToList();
-			Print(orderedObjects);
+			Print("unordered", myObjects);
+			Print("order", myObjects.OrderBy(x => x.MyDate).ToList());
 
 			Console.Read();
 		}
 
-		static private void Print(List<MyObject> objects)
+		static private void Print(string message, List<MyObject> objects)
 		{
+			Console.WriteLine(message);
 			objects.ForEach(x => Console.WriteLine(string.Format("obj date: {0}", x.MyDate)));
 			Console.WriteLine(Environment.NewLine);
 		}

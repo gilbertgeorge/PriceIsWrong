@@ -7,7 +7,7 @@ namespace ClosestWithoutGoingOver
 		public MyObject()
 		{
 			objectId = 0;
-			MyDate = DateTime.Now;
+			myDate = DateTime.Now;
 		}
 
 		public MyObject(int id)
@@ -19,7 +19,7 @@ namespace ClosestWithoutGoingOver
 		public MyObject(DateTime date)
 		{
 			objectId = 0;
-			MyDate = date;
+			myDate = date;
 		}
 
 		public MyObject(int id, DateTime date)
