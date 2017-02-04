@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ClosestWithoutGoingOver
+//Note to self, download linqpad....
+namespace PriceIsWrong
 {
 	class Program
 	{
@@ -25,8 +24,14 @@ namespace ClosestWithoutGoingOver
 			myObjects.Add(obj5);
 			myObjects.Add(obj3);
 
+			DateTime theTime = DateTime.Now;
+
 			Print("unordered", myObjects);
-			Print("order", myObjects.OrderBy(x => x.MyDate).ToList());
+			Console.WriteLine(ClosestWithoutGoingOver(myObjects, theTime).MyDate);
+
+			Print("order", myObjects.OrderBy(d => d.MyDate).ToList());
+			Console.WriteLine(ClosestWithoutGoingOver(myObjects, theTime).MyDate);
+
 
 			Console.Read();
 		}
@@ -36,6 +41,21 @@ namespace ClosestWithoutGoingOver
 			Console.WriteLine(message);
 			objects.ForEach(x => Console.WriteLine(string.Format("obj date: {0}", x.MyDate)));
 			Console.WriteLine(Environment.NewLine);
+		}
+
+		static MyObject ClosestWithoutGoingOver(List<MyObject> listObjs, DateTime theDate)
+		{
+			MyObject retVal = new MyObject(DateTime.MinValue);
+
+			foreach(MyObject obj in listObjs)
+			{
+				if(obj.MyDate.Date <= theDate.Date)
+				{
+					retVal = obj;
+				}
+			}
+
+			return retVal;
 		}
 	}
 }

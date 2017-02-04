@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace ClosestWithoutGoingOver
+namespace PriceIsWrong
 {
 	public class MyObject
 	{
 		public MyObject()
 		{
 			objectId = 0;
-			myDate = DateTime.Now;
+			myDate = DateTime.MinValue;
 		}
 
 		public MyObject(int id)
 		{
 			objectId = id;
-			myDate = DateTime.Now;
+			myDate = DateTime.MinValue;
 		}
 
 		public MyObject(DateTime date)
