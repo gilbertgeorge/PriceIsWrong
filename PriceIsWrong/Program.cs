@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-//Note to self, download linqpad....
+//Note to self, download linqpad.... huzzah!
 namespace PriceIsWrong
 {
 	class Program
@@ -29,10 +29,12 @@ namespace PriceIsWrong
 			Print("unordered", myObjects);
 			Console.WriteLine(ClosestWithoutGoingOver(myObjects, theTime).MyDate);
 
-			Print("order", myObjects.OrderBy(d => d.MyDate).ToList());
-			Console.WriteLine(ClosestWithoutGoingOver(myObjects, theTime).MyDate);
+			MyObject query = myObjects
+				.Where(n => n.MyDate <= theTime)
+				.OrderByDescending(n => n.MyDate)
+				.FirstOrDefault();
 
-
+			Console.WriteLine(string.Format("Price is right: {0}", query.MyDate));
 			Console.Read();
 		}
 
